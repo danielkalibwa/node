@@ -1,0 +1,20 @@
+extends layout
+block content
+
+    div.row.justify-content-center
+        div.col-md-5
+            header.card-header
+                h4.card-title Login
+                    
+            form.form(name="login_form" action="/login" method="POST")
+                div.form-row
+                    div.col.form-group
+                        label(for="first_name") Username
+                        input.form-control(name="firstname" id="first_name" placeholder="")
+                div.form-row
+                    div.col.form-group
+                        label(for="first_name") Password 
+                        input.form-control(name="password" id="pass_word" placeholder="")
+                div.form-group
+                        div.col.form-group
+                        button.btn.btn-primary.btn-block(type="submit") Login

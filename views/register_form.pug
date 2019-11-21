@@ -1,0 +1,89 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    link(rel="stylesheet", href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+    link(rel="stylesheet" href="/css/bootstrap.min.css")
+   
+    link(href="/css/mycss.css" type="text/css" rel="stylesheet")
+
+    
+    
+
+
+    title NODE REGISTRATION FORM
+  body
+     div.container
+        br
+        hr
+        
+        
+        
+        br
+        div.row.justify-content-center
+            div.col-md-6
+                
+
+                div.card
+                    header.card-header
+                        a.float-right.btn.btn-outline-primary.mt-1(href="#") Log in
+                        h4.card-title.mt-2 Sign Up
+                    article.card-body
+                        form.form(name="registration_form" action="/register" method="POST")
+                            div.form-row
+                                div.col.form-group
+                                    label(for="first_name") First Name 
+                                    input.form-control(name="firstname" id="first_name" placeholder="")
+                                div.col.form-group
+                                    label(for="last_name") Last Name
+                                    input.form-control(name="lastname" id="last_name" placeholder="")
+                                div.col.form-group
+                                    label(for="last_name") Username
+                                    input.form-control(name="Username" id="Username" placeholder="")
+                            
+                            div.form-group
+                                label(for="email") Email
+                                input.form-control(type="email" name="Email" placeholder = " ")
+                                small.form-text.text-muted We'll never share your email with anyone else.
+
+                            div.form-group
+                                label.form-check.form-check-inline
+                                    input.form-check-input(type="radio" name="gender" value="Female")
+                                    span.form-check-label Female
+
+                                label.form-check.form-check-inline
+                                    input.form-check-input(type="radio" name="gender" value="Male")
+                                    span.form-check-label Male
+
+                            div.form-row
+                                div.col-md-6.form-group
+                                    label City
+                                    input.form-control(type="text" name="city")
+                                
+                                div.col-md-6.form-group
+                                    label Country
+                                    select#inputState.form-control
+                                        option Choose.......
+                                        option Uzbekistan
+                                        option Russia
+                                        option(selected) United States
+                                        option Choose.......
+                                        option India
+                                        option Afghanistan
+                                        option Uganda
+
+                            div.form-group
+                                label Create password
+                                input.form-control(type="password" name="password")
+
+                            div.form-group
+                                button.btn.btn-primary.btn-block(type="submit") Register
+                            
+                            small.text-muted By clicking the 'Sign Up' button, you confirm that you accept our
+                                br
+                                Terms of use and Privacy Policy
+
+                    div.border-top.card-body.text-center Have an account? 
+                        a(href="") Log In
+                            
+    

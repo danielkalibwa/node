@@ -1,53 +1,40 @@
-//console.log('Hello world')
-const express = require('express');
-const app = express();
-const path = require ('path')
-app.set('view engine','pug')
-app.set('views', path.join(__dirname, "views"))//setting the view engine. 
+/* require is a keyword used to use a package and below are the packages */
+const express = require("express"); 
+const path = require("path");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
-//app.get('/users/:name', (req, res)=>{
-   // res.send('Hello'+" "+ req.params.name)
-//})
-// require is just key word used in node in order to require something
-app.listen(3000,function(){
-    console.log('listening on 3000')
-}) 
-//app.get(path,callback)
-app.get('/', (req, res)=>{
-    res.send('Hello world')
-})
+//Midle ware
+const app = express();// now we have our express app
+app.set("view engine", "pug"); //setting the view engine as pug
+app.set("views", path.join(__dirname, "views")); //there's a folder called views and this is how to get it
+app.use(bodyParser.urlencoded({ extended: true })); //for geting the posted data from the form in the console/body and the output is json
 
-app.get('/about', (req, res)=>{
-    res.send('This is About us page ')
-})
+// var storage = multer.diskStorage({
+//   destination:function(req,file,cb){
+//     cb(null,"uploads")
+//   },
+//   filename:function(req,file,cb){
+//     cb(null,file.fieldname)
+//   }
+// })
 
-app.post('/sending', (req, res)=>{
-    res.send('Got a POST request at /user ')
-})
-
-app.put('/edit', (req, res)=>{
-    res.send('Got a PUT request at /user ')
-})
-
-app.delete('/delete', (req, res)=>{
-    res.send('Got a DELETE request at /user ')
-})
-
-app.get('/home', (req, res)=>{
-    res.send('This is error us page ')
-})
-
-app.get('/users/:name', (req, res)=>{
-    res.send('Hello'+" "+ req.params.name)
-})
-
-app.get('/users', (req, res)=>{
-    res.send('This is class'+" "+ req.query.class+""+"cohort"+req.query.cohort)
-})
-
-app.get('/set',(req,res)=>{
-    res.render('register')//app.get(path,call back())- using the get method
-})
+// import routes
+const registrationRoutes = require('./routes/registrationroutes');
+app.use('/register',registrationRoutes);
+const loginRoutes = require('./routes/loginroutes');
+app.use('/login',loginRoutes);
 
 
+/* mongoose db connection */
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017/node-demo");//
 
+// app.get('/', (req,res) => {
+//   res.render('register_form')
+// });
+
+/* listening for requests: the server */
+app.listen(3000, function() {
+  console.log("Express listening  on 3000");
+});

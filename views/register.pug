@@ -1,19 +1,18 @@
-<!doctype.html>
-html
-    head
-        link(rel="stylesheet", href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
-        title fisrt pug template
-    body
-        div.row.justify-content-center 
-            div.col-md-6
-                div.card-body
-                    hearder.card-hearder
-                        h4.card-title Register
-                    form 
-                        div.form-row
-                            div.col.form-group
-                                label First Name
-                                input(name="First Name" type="text") 
-                            div.col.form-group
-                                label Last Name
-                                input(name="First Name" type="text")
+extends layout
+
+block content
+    title
+        
+        form(action="/uploadmultiple" enctype="multipart/form-data" method="POST")
+            input(type="file", name="myFiles"value="" multiple)
+            input(type="submit" value="Upload your file")
+
+        form(action="/uploadFile" enctype="multipart/form-data" method="POST")
+            input(type="file", name="myFile" value="")
+            input(type="submit" value="Upload your file")
+
+        form(action="/uploadphoto" enctype="multipart/form-data" method="POST")
+            input(type="file", name="myImage" value="" accept=)
+            input(type="submit" value="Upload photo")
+
+        
